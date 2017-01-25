@@ -3,9 +3,13 @@ FROM nimmis/apache-php5
 
 MAINTAINER SemaphoreCI <dev@semaphoreci.com>
 
+RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN mkdir -p /var/www/public
 COPY public /var/www/public
+
+
 
 EXPOSE 80
 EXPOSE 443
