@@ -8,6 +8,7 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN mkdir -p /var/www/public
 COPY public /var/www/public
+COPY src /var/www/src
 
 EXPOSE 80
 EXPOSE 443
