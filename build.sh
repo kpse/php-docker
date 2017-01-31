@@ -42,6 +42,10 @@ function build_push {
     && docker push 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version
 }
 
+function unittest {
+    echo params : $@
+    ./vendor/phpunit/phpunit/phpunit ./tests/
+}
 function test_script {
     version=${1:-latest}
     echo build and push image to ECS with version: $version
@@ -50,18 +54,21 @@ function test_script {
 
 function help_message {
     echo l for local_dev
-    echo p for build and push image to ECS
+    echo pm for build and push image to ECS
     echo d for deploy new image to ECS
+    echo a for both pm and d
 }
 
 function main {
   	case $1 in
 		l) local_dev ;;
-		p) build_push "${@:2}" ;;
+		p) git pull --rebase && unittest "${@:2}" && git push origin master ;;
+		pm) unittest "${@:2}" && build_push "${@:2}" ;;
 		d) deploy "${@:2}";;
-		a) build_push "${@:2}" && deploy "${@:2}";;
+		a) unittest "${@:2}" && build_push "${@:2}" && deploy "${@:2}";;
 		a80) build_push_80_80 "${@:2}" && deploy_80_80 "${@:2}";;
-		t) test_script "${@:2}" ;;
+		ts) test_script "${@:2}" ;;
+		t) unittest "${@:2}" ;;
 		*) help_message ;;
 	esac
 }

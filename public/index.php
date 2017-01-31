@@ -40,11 +40,9 @@ echo "The current time is " . $stamp;
 require(dirname(__DIR__) . '/src/ConcreteClass1.php');
 require(dirname(__DIR__) . '/src/ConcreteClass2.php');
 $class1 = new ConcreteClass1;
-//$class1->printOut();
 echo $class1->prefixValue('FOO_') ."\n";
 
 $class2 = new ConcreteClass2;
-//$class2->printOut();
 echo $class2->prefixValue('FOO_') ."\n";
 ?>
 
