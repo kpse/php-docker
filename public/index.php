@@ -7,7 +7,8 @@
 <body>
 
 <h2><?php
-    echo "Hi, I'm a PHP project! my version is 9";
+	$version = 10.1;
+    echo "Hi, I'm a PHP project! my version is " . $version;
 ?>
 </h2>
 <br>

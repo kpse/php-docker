@@ -1,8 +1,9 @@
 #!/bin/bash
 
-
 function deploy {
-    echo do deploy
+    version=${1:-latest}
+    echo deploy to ECS with version: $version
+    BUILD_NUMBER=$version ./update-service.sh
 }
 
 function local_dev {
@@ -13,10 +14,18 @@ function local_dev {
 }
 
 function build_push {
-    echo build and push image to ECS
+    version=${1:-latest}
+    echo build and push image to ECS with version: $version
+    echo version = $version
     docker build -t louis-php . \
-    && docker tag louis-php:latest 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest \
-    && docker push 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest
+    && docker tag louis-php:latest 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
+    && docker push 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version
+}
+
+function test_script {
+    version=${1:-latest}
+    echo build and push image to ECS with version: $version
+    echo version = $version
 }
 
 function help_message {
@@ -28,8 +37,10 @@ function help_message {
 function main {
   	case $1 in
 		l) local_dev ;;
-		p) build_push ;;
-		d) deploy ;;
+		p) build_push "${@:2}" ;;
+		d) deploy "${@:2}";;
+		a) build_push "${@:2}" && deploy "${@:2}";;
+		t) test_script "${@:2}" ;;
 		*) help_message ;;
 	esac
 }
