@@ -15,13 +15,14 @@
 <h3>A little calculate function</h3>
 <?php
 $x = 5 /* + 15 */ + 5;
-echo "5 /* + 15 */ + 5 = " . $x;
+echo "5 /* + 15 */ + 65 = " . $x;
 ?>
 
 
 <br>
 
-<h3>A little datetime function</h3>
+<h3>Datetime function</h3>
+
 <?php
 $date = new DateTime();
 $stamp = $date->format('Y-m-d H:i:s');
@@ -29,6 +30,22 @@ $stamp = $date->format('Y-m-d H:i:s');
 echo "The current time is " . $stamp;
 ?>
 
+<br>
+
+
+<h3>Class / Objects</h3>
+
+<?php
+require(dirname(__DIR__) . '/src/ConcreteClass1.php');
+require(dirname(__DIR__) . '/src/ConcreteClass2.php');
+$class1 = new ConcreteClass1;
+//$class1->printOut();
+echo $class1->prefixValue('FOO_') ."\n";
+
+$class2 = new ConcreteClass2;
+//$class2->printOut();
+echo $class2->prefixValue('FOO_') ."\n";
+?>
 
 </body>
 </html>
