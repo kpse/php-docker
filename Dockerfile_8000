@@ -5,12 +5,12 @@ MAINTAINER Louis SUO <kpsesuo@gmail.com>
 
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY 001-8000-default.conf /etc/apache2/sites-available/001-default.conf
 RUN mkdir -p /var/www/public
 COPY public /var/www/public
 COPY src /var/www/src
 
-EXPOSE 80
+EXPOSE 8000
 
 ENV APACHE_LOG_DIR=/var/log/apache2/
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

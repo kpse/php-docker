@@ -1,11 +1,11 @@
 #!/bin/bash
-SERVICE_NAME="php-service3"
+#SERVICE_NAME="php-service3"
+#TASK_FAMILY="louis-php-task"
 IMAGE_VERSION="v_"${BUILD_NUMBER}
-TASK_FAMILY="louis-php-task"
 
 # Create a new task definition for this build
-sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" php-service3.json > php-service3-v_${BUILD_NUMBER}.json
-aws ecs register-task-definition --family ${TASK_FAMILY} --cli-input-json file://php-service3-v_${BUILD_NUMBER}.json
+sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" ${SERVICE_NAME}.json > ${SERVICE_NAME}-v_${BUILD_NUMBER}.json
+aws ecs register-task-definition --family ${TASK_FAMILY} --cli-input-json file://${SERVICE_NAME}-v_${BUILD_NUMBER}.json
 
 # Update the service with the new task definition and desired count
 TASK_REVISION=`aws ecs describe-task-definition --task-definition ${TASK_FAMILY} | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
