@@ -26,12 +26,15 @@ function build_push_80_80 {
     echo build and push image to ECS with version: $version
     echo version = $version
     docker build -t louis-php . \
-    && docker tag louis-php:latest 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
-    && docker push 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version
+    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
+    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest \
+    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
+    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest
+
 
     docker build -t louis-php2 -f -f $(pwd)/Dockerfile_PROD_B . \
-    && docker tag louis-php2:latest 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php2:$version \
-    && docker push 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php2:$version
+    && docker tag louis-php2:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php2:$version \
+    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php2:$version
 }
 
 function build_push {
@@ -39,8 +42,10 @@ function build_push {
     echo build and push image to ECS with version: $version
     echo version = $version
     docker build -t louis-php --build-arg PHP_PROJECT_VER=$version . \
-    && docker tag louis-php:latest 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
-    && docker push 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version
+    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
+    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest \
+    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
+    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest
 }
 
 function unittest {
