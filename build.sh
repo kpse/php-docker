@@ -10,7 +10,7 @@ function deploy_80_80 {
 function deploy {
     version=${1:-latest}
     echo deploy to ECS with version: $version
-    BUILD_NUMBER=$version SERVICE_NAME=php-service3 TASK_FAMILY=louis-php-task ./update-service.sh
+    BUILD_NUMBER=$version SERVICE_NAME=php-service5 TASK_FAMILY=louis-php-task ./update-service.sh
 }
 
 function local_dev {

@@ -1,5 +1,5 @@
 {
-    "networkMode": "host",
+    "networkMode": "bridge",
     "family": "louis-php-task",
     "volumes": [],
     "containerDefinitions": [
@@ -14,7 +14,7 @@
           {
             "protocol": "tcp",
             "containerPort": 80,
-            "hostPort": 80
+            "hostPort": 0
           }
         ],
         "essential": true,
