@@ -7,7 +7,7 @@
 <body>
 
 <h2><?php
-	$version = 10.3;
+	$version = getenv('PHP_PROJECT_VER') ?: 'local_dev';
     echo "Hi, I'm a PHP project! my version is " . $version;
 ?>
 </h2>

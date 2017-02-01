@@ -14,9 +14,10 @@ function deploy {
 }
 
 function local_dev {
-    echo local_dev
-    docker rm -f local_dev_server \
-    && docker build -t local_dev -f $(pwd)/Dockerfile_dev . \
+    version=${1:-local_dev}
+    echo local_dev on version : $version
+    docker rm -f local_dev_server
+    docker build -t local_dev -f $(pwd)/Dockerfile_dev --build-arg PHP_PROJECT_VER=$version . \
     && docker run -tid -p 80:80 --name="local_dev_server" -v $(pwd):/var/www local_dev
 }
 
@@ -37,7 +38,7 @@ function build_push {
     version=${1:-latest}
     echo build and push image to ECS with version: $version
     echo version = $version
-    docker build -t louis-php . \
+    docker build -t louis-php --build-arg PHP_PROJECT_VER=$version . \
     && docker tag louis-php:latest 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
     && docker push 993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version
 }
@@ -61,7 +62,7 @@ function help_message {
 
 function main {
   	case $1 in
-		l) local_dev ;;
+		l) local_dev "${@:2}";;
 		p) git pull --rebase && unittest "${@:2}" && git push origin master ;;
 		pm) unittest "${@:2}" && build_push "${@:2}" ;;
 		d) deploy "${@:2}";;

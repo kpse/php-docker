@@ -13,4 +13,7 @@ COPY src /var/www/src
 EXPOSE 80
 
 ENV APACHE_LOG_DIR=/var/log/apache2/
+ARG PHP_PROJECT_VER
+ENV PHP_PROJECT_VER=$PHP_PROJECT_VER
+
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
