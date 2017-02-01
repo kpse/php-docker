@@ -8,7 +8,7 @@
         "environment": [],
         "name": "louis-php-container",
         "mountPoints": [],
-        "image": "993146248788.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:%BUILD_NUMBER%",
+        "image": "226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:%BUILD_NUMBER%",
         "cpu": 0,
         "portMappings": [
           {
