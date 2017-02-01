@@ -1,3 +1,4 @@
 .idea/
 vendor
 php-service3-v_*.json
+.env
