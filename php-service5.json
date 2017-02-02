@@ -4,9 +4,43 @@
     "volumes": [],
     "containerDefinitions": [
       {
-        "memoryReservation": 1000,
+        "memoryReservation": 200,
         "environment": [],
         "name": "louis-php-container",
+        "mountPoints": [],
+        "image": "226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:%BUILD_NUMBER%",
+        "cpu": 0,
+        "portMappings": [
+          {
+            "protocol": "tcp",
+            "containerPort": 80,
+            "hostPort": 0
+          }
+        ],
+        "essential": true,
+        "volumesFrom": []
+      },
+      {
+        "memoryReservation": 200,
+        "environment": [],
+        "name": "louis-php-container2",
+        "mountPoints": [],
+        "image": "226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:%BUILD_NUMBER%",
+        "cpu": 0,
+        "portMappings": [
+          {
+            "protocol": "tcp",
+            "containerPort": 80,
+            "hostPort": 0
+          }
+        ],
+        "essential": true,
+        "volumesFrom": []
+      },
+      {
+        "memoryReservation": 200,
+        "environment": [],
+        "name": "louis-php-container3",
         "mountPoints": [],
         "image": "226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:%BUILD_NUMBER%",
         "cpu": 0,
