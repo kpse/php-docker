@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="well">
-	<form action="action" method="post">
+	<form action="action.php" method="post">
 	<div class="form-group">
 		<label for="name">You name</label>
 		<input type="text" class="form-control" id="name" name="name" placeholder="Your name">
