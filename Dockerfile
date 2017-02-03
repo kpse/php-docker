@@ -9,6 +9,7 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN mkdir -p /var/www/public
 COPY public /var/www/public
 COPY src /var/www/src
+COPY vendor /var/www/vendor
 
 EXPOSE 80
 
