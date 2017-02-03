@@ -2,3 +2,4 @@
 vendor
 php-service*-v_*.json
 .env
+.DS_Store
