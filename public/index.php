@@ -37,8 +37,9 @@ echo "The current time is " . $stamp;
 <h3>Class / Objects</h3>
 
 <?php
-require(dirname(__DIR__) . '/src/ConcreteClass1.php');
-require(dirname(__DIR__) . '/src/ConcreteClass2.php');
+spl_autoload_register(function ($class_name) {
+	include_once '../src/' . $class_name . '.php';
+});
 $class1 = new ConcreteClass1;
 echo $class1->prefixValue('FOO_') ."\n";
 
