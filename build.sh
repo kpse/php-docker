@@ -1,12 +1,5 @@
 #!/bin/bash
 
-function deploy_80_80 {
-    version=${1:-latest}
-    echo deploy to ECS with version: $version
-    BUILD_NUMBER=$version SERVICE_NAME=php-service3 TASK_FAMILY=louis-php-task ./update-service.sh \
-    && BUILD_NUMBER=$version SERVICE_NAME=php-service5 TASK_FAMILY=louis-php-task2 ./update-service.sh
-}
-
 function deploy {
     version=${1:-latest}
     echo deploy to ECS with version: $version
@@ -19,22 +12,6 @@ function local_dev {
     docker rm -f local_dev_server
     docker build -t local_dev -f $(pwd)/Dockerfile_dev --build-arg PHP_PROJECT_VER=$version . \
     && docker run -tid -p 80:80 --name="local_dev_server" -v $(pwd):/var/www local_dev
-}
-
-function build_push_80_80 {
-    version=${1:-latest}
-    echo build and push image to ECS with version: $version
-    echo version = $version
-    docker build -t louis-php . \
-    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
-    && docker tag louis-php:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest \
-    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:$version \
-    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php:latest
-
-
-    docker build -t louis-php2 -f -f $(pwd)/Dockerfile_PROD_B . \
-    && docker tag louis-php2:latest 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php2:$version \
-    && docker push 226019795248.dkr.ecr.ap-southeast-2.amazonaws.com/louis-php2:$version
 }
 
 function build_push {
@@ -72,7 +49,6 @@ function main {
 		pm) unittest "${@:2}" && build_push "${@:2}" ;;
 		d) deploy "${@:2}";;
 		a) unittest "${@:2}" && build_push "${@:2}" && deploy "${@:2}";;
-		a80) build_push_80_80 "${@:2}" && deploy_80_80 "${@:2}";;
 		ts) test_script "${@:2}" ;;
 		t) unittest "${@:2}" ;;
 		*) help_message ;;
