@@ -15,7 +15,14 @@
 		<label for="age">you age</label>
 		<input type="text" class="form-control" id="age" name="age" placeholder="How old are you">
 	</div>
-
+        <div class="form-group">
+            <label>
+                <input type="radio" name="gender" value="female">Female
+            </label>
+            <label>
+                <input type="radio" name="gender" value="male">Male
+            </label>
+        </div>
 	<div class="checkbox">
 		<label>
 			<input type="checkbox"> Check me out
