@@ -2,12 +2,18 @@
 
 ### PHP
 
-### Docker
+- http://php.net/docs.php 
+
+### Docker image
+
+- https://hub.docker.com/r/nimmis/apache-php5/~/dockerfile/
 
 ### AWS ECS
 
 #### ALB
 
-#### deployment
+#### Deployment
 
-- To add ALB, cluster, services, task into stack
+- To add ALB, cluster, services, task into stack / script
+
+- To scale up/down instance & tasks in service by script
