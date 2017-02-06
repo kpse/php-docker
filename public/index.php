@@ -1,10 +1,7 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Php deployment</title>
-</head>
-<body>
+<?php
+include_once '../src/template_autoload.php';
+$twig->load('header.twig')->display(array('title' => 'Home page'));
+?>
 
 <h2><?php
 	$version = getenv('PHP_PROJECT_VER') ?: 'local_dev';
@@ -58,6 +55,7 @@ include_once '../src/template_autoload.php';
 $twig->load('sample.twig')->display(array('my_var' => 'some value'));
 ?>
 
-
-</body>
-</html>
+<?php
+include_once '../src/template_autoload.php';
+$twig->load('footer.twig')->display(array());
+?>

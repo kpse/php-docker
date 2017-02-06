@@ -1,10 +1,8 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<title>Php deployment</title>
-</head>
-<body>
+<?php
+include_once '../src/template_autoload.php';
+$twig->load('header.twig')->display(array('title' => 'Home page'));
+?>
+
 <div class="well">
 	<form action="action.php" method="post">
 	<div class="form-group">
@@ -32,5 +30,7 @@
 </form>
 </div>
 
-</body>
-</html>
+<?php
+include_once '../src/template_autoload.php';
+$twig->load('footer.twig')->display(array());
+?>
