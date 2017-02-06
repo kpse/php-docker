@@ -5,7 +5,7 @@ MAINTAINER Louis SUO <kpsesuo@gmail.com>
 
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY deployment/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN mkdir -p /var/www/public
 COPY public /var/www/public
 COPY src /var/www/src

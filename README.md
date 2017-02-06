@@ -6,7 +6,7 @@
 
 - http://php.net/docs.php 
 
-### Docker image
+### Docker image (Base on)
 
 - https://hub.docker.com/r/nimmis/apache-php5/~/dockerfile/
 
