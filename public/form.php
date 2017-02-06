@@ -1,6 +1,6 @@
 <?php
 include_once '../src/template_autoload.php';
-$twig->load('header.twig')->display(array('title' => 'Home page'));
+$twig->load('header.twig')->display(array('title' => 'Profile'));
 ?>
 
 <div class="well">
